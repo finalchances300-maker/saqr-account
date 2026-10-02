@@ -1,0 +1,39 @@
+/* Saqr — account deletion page styles (kept out of index.html: the page's Content-Security-Policy allows
+   styles only from this site, no inline <style>). */
+:root { --bg: #F5EFE4; --card: #FFFFFF; --ink: #2B2118; --muted: #6E6152; --accent: #8A5A2B; --danger: #A0392B; --ok: #2E6B1F; --line: #E2D6C3; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #1C1814; --card: #27211B; --ink: #F2EADF; --muted: #B9AC9B; --accent: #D4A26A; --danger: #E06A5A; --ok: #7BC46A; --line: #3B3229; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 system-ui, "Segoe UI", Tahoma, "Noto Sans Arabic", sans-serif; }
+main { max-width: 520px; margin: 0 auto; padding: 24px 16px 48px; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+h1 { font-size: 1.35rem; margin: 0; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; margin-bottom: 16px; }
+label { display: block; font-weight: 600; margin: 12px 0 4px; }
+input { width: 100%; padding: 11px 12px; border: 1px solid var(--line); border-radius: 10px; font: inherit; background: var(--bg); color: var(--ink); }
+button { font: inherit; font-weight: 600; border: 0; border-radius: 10px; padding: 11px 16px; cursor: pointer; margin-top: 14px; width: 100%; }
+button.primary { background: var(--accent); color: #fff; }
+button.danger { background: var(--danger); color: #fff; }
+button.link { background: none; color: var(--accent); width: auto; padding: 6px 8px; margin: 0; border: 1px solid var(--line); }
+button:disabled { opacity: .55; cursor: default; }
+.muted { color: var(--muted); font-size: .92rem; }
+.msg { margin-top: 12px; font-weight: 600; }
+.msg.error { color: var(--danger); }
+.msg.ok { color: var(--ok); }
+ul { padding-inline-start: 20px; margin: 8px 0; }
+h2 { font-size: 1.1rem; margin: 14px 0 6px; }
+.rules li { margin-bottom: 6px; }
+.rules li.strong { font-weight: 700; color: var(--danger); }
+label.tick { display: flex; gap: 10px; align-items: flex-start; font-weight: 700; margin: 16px 0 4px; }
+label.tick input { width: auto; margin-top: 4px; }
+textarea { width: 100%; padding: 11px 12px; border: 1px solid var(--line); border-radius: 10px; font: inherit; background: var(--bg); color: var(--ink); resize: vertical; }
+.warn { font-weight: 700; color: var(--danger); }
+.appeal-item { border-top: 1px solid var(--line); padding: 10px 0; }
+.appeal-item p { margin: 4px 0; overflow-wrap: anywhere; }
+.appeal-item p.strong { font-weight: 700; }
+[hidden] { display: none !important; }
+/* SC14: the community rules page (rules.html) */
+.rules-list li { margin-bottom: 6px; overflow-wrap: anywhere; }
+.contacts p { margin: 4px 0; overflow-wrap: anywhere; }
+a { color: var(--accent); }

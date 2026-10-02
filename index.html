@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Saqr — Account | صقر — الحساب</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://csknnbfnchdiqzgahzdg.supabase.co; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header>
+    <h1 data-t="title"></h1>
+    <button class="link" id="lang" type="button"></button>
+  </header>
+
+  <section class="card">
+    <p data-t="intro"></p>
+    <p class="muted" data-t="inGame"></p>
+    <p><a href="rules.html" id="rules-link" data-t="communityRules"></a></p>
+  </section>
+
+  <section class="card" id="signin">
+    <form id="signin-form" autocomplete="on">
+      <label for="email" data-t="email"></label>
+      <input id="email" type="email" autocomplete="username" required>
+      <label for="password" data-t="password"></label>
+      <input id="password" type="password" autocomplete="current-password" required>
+      <button class="primary" type="submit" id="signin-btn" data-t="signIn"></button>
+    </form>
+    <p class="muted" data-t="forgot"></p>
+    <p class="msg" id="signin-msg" role="status"></p>
+  </section>
+
+  <section class="card" id="appeal" hidden>
+    <h2 data-t="appealTitle"></h2>
+    <p class="warn" id="appeal-state" role="status"></p>
+    <div id="appeal-list"></div>
+    <div id="appeal-form" hidden>
+      <label for="appeal-text" data-t="appealLabel"></label>
+      <textarea id="appeal-text" rows="5"></textarea>
+      <p class="muted" id="appeal-count"></p>
+      <button class="primary" type="button" id="appeal-btn" data-t="appealSend"></button>
+    </div>
+    <p class="msg" id="appeal-msg" role="status"></p>
+  </section>
+
+  <section class="card" id="confirm" hidden>
+    <p><span data-t="signedInAs"></span> <strong id="who" dir="ltr"></strong></p>
+    <h2 data-t="rulesTitle"></h2>
+    <ul class="rules">
+      <li data-t="rule1"></li>
+      <li data-t="rule2"></li>
+      <li data-t="rule3"></li>
+      <li data-t="rule4"></li>
+      <li data-t="rule5"></li>
+      <li data-t="rule6"></li>
+      <li data-t="what5"></li>
+      <li class="strong" data-t="rule7"></li>
+    </ul>
+    <label class="tick"><input id="agree" type="checkbox"> <span data-t="agree"></span></label>
+    <label for="word" id="word-label"></label>
+    <input id="word" type="text" autocomplete="off">
+    <button class="danger" type="button" id="delete-btn" data-t="delete" disabled></button>
+    <button class="link" type="button" id="cancel-btn" data-t="cancelRequest" hidden></button>
+    <p class="msg" id="confirm-msg" role="status"></p>
+  </section>
+</main>
+
+<!-- config.js is NOT in git (copy config.example.js to config.js and put the project URL + PUBLISHABLE key in it). -->
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

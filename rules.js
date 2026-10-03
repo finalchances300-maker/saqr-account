@@ -1,6 +1,6 @@
 // Saqr — community rules page (SC14): shows the Arabic or the English rules (Arabic first) and fills the contact lines
 // from window.SAQR_CONFIG.rulesContact {supportEmail, childSafetyContact, webPageUrl} when config.js sets them (an empty
-// or missing value keeps its line hidden). Text only (textContent), no network calls, nothing stored in the browser.
+// or missing value keeps its line hidden; the contacts box is hidden while all its lines are). Text only (textContent), no network calls, nothing stored in the browser.
 (function () {
   "use strict";
   var T = {
@@ -28,6 +28,11 @@
       v = typeof v === "string" ? v.trim() : "";
       lines[i].querySelector(".contact-value").textContent = v;
       lines[i].hidden = v.length === 0;
+    }
+    // the whole contacts box stays hidden while none of its lines is shown (no empty box)
+    var boxes = document.querySelectorAll(".contacts");
+    for (var j = 0; j < boxes.length; j++) {
+      boxes[j].hidden = boxes[j].querySelector("[data-contact]:not([hidden])") === null;
     }
   }
 

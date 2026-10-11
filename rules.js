@@ -4,8 +4,8 @@
 (function () {
   "use strict";
   var T = {
-    ar: { heading: "صقر — قواعد المجتمع", lang: "English", back: "حسابك في صقر" },
-    en: { heading: "Saqr — Community rules", lang: "العربية", back: "Your Saqr account" }
+    ar: { heading: "صقار الخليج — قواعد المجتمع", lang: "English", back: "حسابك في صقار الخليج" },
+    en: { heading: "Saqar Alkhaleej — Community rules", lang: "العربية", back: "Your Saqar Alkhaleej account" }
   };
   var lang = (navigator.language || "").toLowerCase().indexOf("en") === 0 ? "en" : "ar";
   function $(id) { return document.getElementById(id); }

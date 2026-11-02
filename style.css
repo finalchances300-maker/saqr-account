@@ -37,3 +37,9 @@ textarea { width: 100%; padding: 11px 12px; border: 1px solid var(--line); borde
 .rules-list li { margin-bottom: 6px; overflow-wrap: anywhere; }
 .contacts p { margin: 4px 0; overflow-wrap: anywhere; }
 a { color: var(--accent); }
+/* 2026-11-02: "Follow us" card (our social accounts) at the top of the privacy and rules pages */
+.social h2 { margin-top: 0; }
+.social-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.social-links a { flex: 1 1 140px; text-align: center; text-decoration: none; font-weight: 600; padding: 10px 12px;
+  border-radius: 10px; background: var(--accent); color: #fff; }
+.social-links a bdi { font-weight: 400; opacity: .9; }

@@ -10,7 +10,7 @@
 </head>
 <body>
 <!-- A7 (App Store plan, 2026-10-11): the privacy policy in Arabic + English. Static: no sign-in, no network calls, no
-     secrets. Every number here comes from falcon_config.json / Docs/Account_Deletion.md (grace days 7, chat 7 days,
+     secrets. Every number here comes from falcon_config.json / Docs/Account_Deletion.md (version 3 = terms_config.version, grace days 7, chat 7 days,
      device links 30 days, DMs 90 days, clan chat 30 days, invite device copies 90 days, evidence 180 / 730 days, photo evidence 180 / 730 days, minimum age 13): if one changes there, change it here in BOTH languages. -->
 <main>
   <header>
@@ -20,24 +20,15 @@
   <p class="muted"><a href="index.html" id="privacy-back">حسابك في صقار الخليج</a></p>
 
   <article id="privacy-ar" lang="ar" dir="rtl" class="rules-lang">
-    <section class="card social">
-      <h2>تابعونا</h2>
-      <p>آخر الأخبار والصقور والمسابقات على حساباتنا: <bdi>@saqaralkhaleej</bdi></p>
-      <p class="social-links">
-        <a href="https://www.instagram.com/saqaralkhaleej/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.tiktok.com/@saqaralkhaleej" target="_blank" rel="noopener">TikTok</a>
-        <a href="https://www.snapchat.com/add/saqaralkhaleej" target="_blank" rel="noopener">Snapchat</a>
-        <a href="https://discord.gg/VNQNYP8Xnd" target="_blank" rel="noopener">Discord</a>
-      </p>
-    </section>
     <section class="card">
       <h2>باختصار</h2>
       <ul class="rules-list">
         <li>نحفظ ما تحتاجه اللعبة لتعمل فقط: بريدك الإلكتروني، واسم الصقّار، وبلدك، وتقدّمك في اللعبة، وصورة الملف إن اخترت واحدة.</li>
         <li>لا إعلانات في اللعبة، ولا تتبّع لك بين التطبيقات، ولا نبيع بياناتك لأحد.</li>
         <li>تستطيع تنزيل بياناتك أو حذف حسابك في أي وقت.</li>
+        <li>لحماية اللاعبين يقرأ المشرفون المحادثات العامة، ويقرأ مالك اللعبة الرسائل الخاصة، ونحفظ بصمة مشفّرة لهاتفك لنمنع الحسابات المخالفة والهواتف المحظورة.</li>
       </ul>
-      <p class="muted">آخر تحديث: ٨ نوفمبر ٢٠٢٦</p>
+      <p class="muted" id="privacy-version-ar">الإصدار ٣ — آخر تحديث: ٨ نوفمبر ٢٠٢٦</p>
     </section>
     <section class="card">
       <h2>١. من نحن</h2>
@@ -49,9 +40,11 @@
         <li><strong>بيانات الحساب:</strong> بريدك الإلكتروني وكلمة مرورك (محفوظة مشفّرة، ولا نستطيع قراءتها).</li>
         <li><strong>ما تختاره أنت:</strong> اسم الصقّار، والبلد، وسنة الميلاد إن سُئلت عنها، و«نبذة عني» إن كتبتها، وإعدادات الخصوصية.</li>
         <li><strong>تقدّمك في اللعبة:</strong> صقورك، وعملاتك ولآلئك، وسباقاتك ونتائجها، ومبيعاتك ومشترياتك داخل اللعبة، وجوائزك.</li>
-        <li><strong>ما تكتبه للآخرين:</strong> رسائل المحادثة العامة ومحادثة الفريق والرسائل الخاصة، وأسماء الصقور والفرق.</li>
+        <li><strong>ما تكتبه للآخرين:</strong> رسائل المحادثة العامة ومحادثة الكلان ومحادثة السباق والرسائل الخاصة، وأسماء الصقور والكلانات. يقرأ المشرفون المحادثات العامة والكلان والسباق، ولا يقرأ الرسائل الخاصة إلا مالك اللعبة، لحماية اللاعبين (انظر «قراءة المحادثات للسلامة»).</li>
         <li><strong>الأصدقاء والحظر:</strong> قائمة أصدقائك ومن حظرتهم.</li>
-        <li><strong>بصمة الجهاز:</strong> رمز مشفّر مشتق من معرّف هاتفك، لا المعرّف نفسه. نستخدمه فقط لكشف من يفتح حسابات كثيرة على جهاز واحد.</li>
+        <li><strong>بصمة الجهاز:</strong> رمز مشفّر مشتق من معرّف هاتفك (في أندرويد Android ID، وفي آيفون معرّف خاص بلعبتنا)، لا المعرّف نفسه، ونوع الجهاز (iPhone أو Android)، والحسابات التي دخلت منه ومتى. نستخدمه فقط لكشف الحسابات الكثيرة على جهاز واحد، ولتطبيق حدّ الحسابات لكل هاتف، ولحظر هاتف خالف صاحبه القواعد.</li>
+        <li><strong>Apple DeviceCheck (آيفون فقط):</strong> إذا حُظر هاتف آيفون نطلب من Apple وضع علامة «محظور» على هذا الآيفون للعبتنا فقط، حتى نعرفه إذا حُذفت اللعبة وثُبّتت من جديد. تحفظ Apple العلامة عندها، ولا نعرف منها من أنت ولا رقم جهازك. نزيلها عندما يُرفع الحظر.</li>
+        <li><strong>موافقتك على القواعد والسياسة:</strong> رقم إصدار القواعد وسياسة الخصوصية الذي وافقت عليه، ووقت الموافقة، وإصدار اللعبة وقتها.</li>
         <li><strong>صورة الملف (اختيارية):</strong> صورة تختارها أنت من هاتفك عندما تضغط «تغيير الصورة». تُقصّ إلى ٢٥٦×٢٥٦ وتُحفظ عند مزوّدنا وتظهر للاعبين الآخرين بجانب اسمك. تستطيع إزالتها من الملف في أي وقت، وقد يزيلها فريق الإشراف إذا خالفت القواعد. لا نفتح صورك إلا عندما تختار صورة بنفسك.</li>
         <li><strong>تقارير الأعطال:</strong> إذا توقفت اللعبة فجأة يصلنا تقرير تقني (نوع الجهاز، إصدار اللعبة، مكان الخطأ) دون بياناتك الشخصية.</li>
         <li><strong>البلاغات:</strong> إذا أبلغت عن لاعب أو أُبلغ عنك، نحفظ نسخة من الرسائل موضوع البلاغ ليراجعها فريق الإشراف.</li>
@@ -65,7 +58,8 @@
       <ul class="rules-list">
         <li>لتشغيل اللعبة وحفظ تقدّمك واستعادته على أي جهاز.</li>
         <li>لعرض اسمك وبلدك في قوائم المتصدّرين والسوق والمزادات للّاعبين الآخرين.</li>
-        <li>لحماية اللاعبين: منع الغش، وتصفية الكلام المسيء، ومراجعة البلاغات.</li>
+        <li>لحماية اللاعبين: منع الغش، وتصفية الكلام المسيء، ومراجعة البلاغات، ومنع الاحتيال والتجارة بالمال الحقيقي والتواصل خارج اللعبة، وتطبيق العقوبات (الكتم والإيقاف والحظر، ومنها حظر الهاتف).</li>
+        <li>لإثبات أنك وافقت على القواعد وسياسة الخصوصية.</li>
         <li>لحماية الصغار: قفل الوالدين، وتصفية الكلام، وأولوية بلاغات سلامة الأطفال.</li>
         <li>للردّ عليك عندما تراسل الدعم.</li>
       </ul>
@@ -73,6 +67,12 @@
     <section class="card">
       <h2>٤. ما يراه اللاعبون الآخرون</h2>
       <p>يرى الآخرون اسم الصقّار، وصورة ملفك إن وضعتها، وبلدك، ومستواك، وفريقك (الكلان)، وقريتك وسيارتك عند زيارتها، وصقورك المعروضة، ونتائج سباقاتك، وجوائزك، وما تكتبه في المحادثات. لا يرى أحد بريدك الإلكتروني ولا سنة ميلادك. تستطيع من الإعدادات تحديد من يراسلك.</p>
+    </section>
+    <section class="card">
+      <h2>قراءة المحادثات للسلامة</h2>
+      <p>لمنع الغش والإساءة والاحتيال والتجارة بالمال الحقيقي (بيع العملات أو الصقور أو الحسابات) وأخذ اللاعبين خارج اللعبة (مثل طلب رقم الهاتف أو حساب سناب شات)، يستطيع فريق الإشراف قراءة المحادثات العامة ومحادثة الكلان ومحادثة السباق، ولا يقرأ الرسائل الخاصة ولا يبحث فيها إلا مالك اللعبة. لا يفتحونها إلا لهذه الأسباب، ويُسجَّل كل فتح وكل بحث وكل إجراء.</p>
+      <p>تنبيهات الكلمات: برنامج على خادمنا يفحص الرسائل الجديدة (الخاصة والعامة والكلان والسباق) بحثاً عن كلمات مراقَبة (مثل أرقام الهواتف وأسماء التطبيقات الأخرى وكلمات البيع بالمال والأشياء الممنوعة كالمخدرات والخمور والسلاح)، وينبّه مالك اللعبة. لا يُعاقَب أحد تلقائياً ولا تُخفى أي رسالة بسبب ذلك: شخص يقرأ ويقرّر. لا تُرسَل نصوص الرسائل إلى أي شركة ذكاء اصطناعي خارجية.</p>
+      <p>العقوبات: قد يكتم الفريق اللاعب في المحادثة أو الصوت، أو يجمّد بيعه وشراءه، أو يوقف حسابه، أو يحظره، أو يحظر هاتفه (القواعد ٨ و٩ و١٤).</p>
     </section>
     <section class="card">
       <h2>الدردشة الصوتية</h2>
@@ -101,7 +101,9 @@
       <ul class="rules-list">
         <li>بيانات الحساب والتقدّم: ما دام حسابك قائماً.</li>
         <li>رسائل المحادثة العامة: ٧ أيام ثم تُحذف. الرسائل الخاصة: ٩٠ يوماً. محادثة الكلان: ٣٠ يوماً.</li>
-        <li>بصمة الجهاز: ٣٠ يوماً بعد آخر استخدام؛ النسخة المستخدمة لمنع التلاعب بدعوات الأصدقاء: ٩٠ يوماً.</li>
+        <li>بصمة الجهاز: ٣٠ يوماً بعد آخر استخدام؛ النسخة المستخدمة لمنع التلاعب بدعوات الأصدقاء: ٩٠ يوماً. الهاتف المحظور: يبقى رمزه المشفّر ما دام الحظر قائماً، ويُحذف عند رفعه. علامة Apple DeviceCheck: عند Apple حتى نزيلها عند رفع الحظر.</li>
+        <li>سجلّ موافقتك على القواعد والسياسة: ما دام حسابك قائماً، ويُحذف مع الحساب.</li>
+        <li>نسخة سطر محادثة طابق كلمة مراقَبة: ٣٠ يوماً على الأكثر، وتُحذف فوراً إذا حُذف السطر الأصلي أو الحساب.</li>
         <li>صورة الملف: ما دامت على حسابك؛ تُحذف عند إزالتها أو حذف الحساب. صورة أُبلغ عنها تُحفظ دليلاً ١٨٠ يوماً، وسنتين في بلاغات سلامة الأطفال.</li>
         <li>سجلّ المشتريات بمال حقيقي: يبقى بعد حذف الحساب دون بياناتك الشخصية، لأغراض المحاسبة واسترداد المبالغ.</li>
         <li>إشارات منع الغش: ٩٠ يوماً بعد إغلاقها؛ وعدّادات الطلبات المرفوضة: ٣٠ يوماً.</li>
@@ -121,7 +123,7 @@
     </section>
     <section class="card">
       <h2>٨. الأطفال</h2>
-      <p>اللعبة للاعبين من عمر ١٣ سنة فما فوق. إذا كان عمرك أقل من ١٣ فلا تنشئ حساباً إلا بإذن وليّ أمرك ومعه. قد تسألك اللعبة عن سنة ميلادك؛ إن أجبت فنستخدمها لإعدادات السلامة فقط، ولا يراها أي لاعب. يستطيع وليّ الأمر تفعيل «قفل الوالدين» برمز سرّي من الإعدادات، فيوقف المزايا الاجتماعية كلها: الأصدقاء والرسائل والمحادثة. يُمنع على أي لاعب أن يسأل غيره عن عمره أو عنوانه أو مدرسته أو رقمه. إذا كنت وليّ أمر وترى أن طفلك أعطانا بيانات دون إذنك، راسلنا وسنحذفها.</p>
+      <p>اللعبة للاعبين من عمر ١٣ سنة فما فوق، فلا تنشئ حساباً إن كان عمرك أقل من ١٣. وإن كان عمرك أقل من ١٨ فاستأذن وليّ أمرك قبل اللعب وقبل أي شراء. قد تسألك اللعبة عن سنة ميلادك؛ إن أجبت فنستخدمها لإعدادات السلامة فقط، ولا يراها أي لاعب. يستطيع وليّ الأمر تفعيل «قفل الوالدين» برمز سرّي من الإعدادات، فيوقف المزايا الاجتماعية كلها: الأصدقاء والرسائل والمحادثة. يُمنع على أي لاعب أن يسأل غيره عن عمره أو عنوانه أو مدرسته أو رقمه. إذا كنت وليّ أمر وترى أن طفلك أعطانا بيانات دون إذنك، راسلنا وسنحذفها.</p>
     </section>
     <section class="card">
       <h2>٩. الأمان</h2>
@@ -129,29 +131,20 @@
     </section>
     <section class="card">
       <h2>١٠. تغيير هذه السياسة</h2>
-      <p>إذا غيّرنا شيئاً مهماً سنحدّث التاريخ أعلى هذه الصفحة.</p>
+      <p>إذا غيّرنا شيئاً مهماً نرفع رقم الإصدار والتاريخ أعلى هذه الصفحة، وتعرض عليك اللعبة ملخّص ما تغيّر وتطلب موافقتك من جديد قبل أن تكمل اللعب. وإن لم توافق فيمكنك التوقف عن اللعب وحذف حسابك.</p>
     </section>
   </article>
 
   <article id="privacy-en" lang="en" dir="ltr" class="rules-lang" hidden>
-    <section class="card social">
-      <h2>Follow us</h2>
-      <p>News, falcons and competitions on our accounts: <bdi>@saqaralkhaleej</bdi></p>
-      <p class="social-links">
-        <a href="https://www.instagram.com/saqaralkhaleej/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.tiktok.com/@saqaralkhaleej" target="_blank" rel="noopener">TikTok</a>
-        <a href="https://www.snapchat.com/add/saqaralkhaleej" target="_blank" rel="noopener">Snapchat</a>
-        <a href="https://discord.gg/VNQNYP8Xnd" target="_blank" rel="noopener">Discord</a>
-      </p>
-    </section>
     <section class="card">
       <h2>In short</h2>
       <ul class="rules-list">
         <li>We store only what the game needs to work: your email, falconer name, country, your game progress, and a profile picture if you choose one.</li>
         <li>No ads in the game, no tracking across apps, and we never sell your data.</li>
         <li>You can download your data or delete your account at any time.</li>
+        <li>To keep players safe, staff read public chats and the game owner reads private messages, and we keep a scrambled code of your phone to stop rule-breaking accounts and banned phones.</li>
       </ul>
-      <p class="muted">Last updated: 8 November 2026</p>
+      <p class="muted" id="privacy-version-en">Version 3 — last updated: 8 November 2026</p>
     </section>
     <section class="card">
       <h2>1. Who we are</h2>
@@ -163,9 +156,11 @@
         <li><strong>Account data:</strong> your email address and your password (stored encrypted; we cannot read it).</li>
         <li><strong>What you choose:</strong> falconer name, country, year of birth if the game asks for it, "About me" if you write one, and your privacy settings.</li>
         <li><strong>Your game progress:</strong> your falcons, coins and Pearls, races and results, sales and purchases inside the game, and trophies.</li>
-        <li><strong>What you write to others:</strong> public chat, clan chat and private messages, and the names of falcons and clans.</li>
+        <li><strong>What you write to others:</strong> public chat, clan chat, race chat and private messages, and the names of falcons and clans. Moderators can read public, clan and race chat; only the game owner can read private messages, to keep players safe (see "Reading chats for safety").</li>
         <li><strong>Friends and blocks:</strong> your friends list and the players you blocked.</li>
-        <li><strong>Device fingerprint:</strong> a scrambled code made from your phone's id, never the id itself. We use it only to notice many accounts opened on one device.</li>
+        <li><strong>Device fingerprint:</strong> a scrambled code made from your phone's id (the Android ID on Android, an id for our game on iPhone), never the id itself, the type of phone (iPhone or Android), and which accounts signed in from it and when. We use it only to notice many accounts on one device, to apply the limit of accounts per phone, and to ban a phone whose owner broke the rules.</li>
+        <li><strong>Apple DeviceCheck (iPhone only):</strong> when an iPhone is banned, we ask Apple to put a "banned" mark on that iPhone, for our game only, so we know it again if the game is deleted and installed again. Apple keeps the mark; it does not tell us who you are or your device number. We remove it when the ban is lifted.</li>
+        <li><strong>Your agreement to the rules and this policy:</strong> the version of the rules and privacy policy you agreed to, when you agreed, and the game version at that time.</li>
         <li><strong>Profile picture (optional):</strong> a photo you choose from your phone when you tap "Change picture". It is cut to 256×256, stored with our provider and shown to other players next to your name. You can remove it in Profile at any time; the moderation team may remove it if it breaks the rules. We only open your photos when you choose a picture yourself.</li>
         <li><strong>Crash reports:</strong> if the game stops unexpectedly we receive a technical report (device type, game version, where the error happened) without your personal data.</li>
         <li><strong>Reports:</strong> if you report a player, or are reported, we keep a copy of the messages in question for the moderation team.</li>
@@ -179,7 +174,8 @@
       <ul class="rules-list">
         <li>To run the game, save your progress and restore it on any device.</li>
         <li>To show your name and country to other players on leaderboards, in the market and in auctions.</li>
-        <li>To protect players: stopping cheating, filtering abusive words and reviewing reports.</li>
+        <li>To protect players: stopping cheating, filtering abusive words, reviewing reports, stopping scams, real-money trading and contact outside the game, and applying penalties (mutes, suspensions and bans, including phone bans).</li>
+        <li>To show that you agreed to the rules and this policy.</li>
         <li>To protect young players: the parent lock, the word filter, and priority for child-safety reports.</li>
         <li>To answer you when you write to support.</li>
       </ul>
@@ -187,6 +183,12 @@
     <section class="card">
       <h2>4. What other players see</h2>
       <p>Others can see your falconer name, your profile picture if you set one, country, level, clan, your village and car when they visit it, the falcons you show, your race results, your trophies and what you write in chats. Nobody sees your email or your year of birth. In Settings you can choose who may message you.</p>
+    </section>
+    <section class="card">
+      <h2>Reading chats for safety</h2>
+      <p>To stop cheating, abuse, scams, real-money trading (selling coins, falcons or accounts) and taking players outside the game (for example asking for a phone number or a Snapchat account), the moderation team can read public chat rooms, clan chat and race chat, and only the game owner can read and search private messages. They open them only for these reasons, and every look, every search and every action is logged.</p>
+      <p>Word alerts: a program on our own server checks new messages (private, public, clan and race) for watched words (for example phone numbers, the names of other apps, money words, or illegal things like drugs, alcohol or weapons) and alerts the game owner. Nobody is punished automatically and no message is hidden because of it: a person reads it and decides. Message text is never sent to an outside AI company.</p>
+      <p>Penalties: the team may mute a player in chat or voice, freeze their trading, suspend or ban the account, or ban the phone (rules 8, 9 and 14).</p>
     </section>
     <section class="card">
       <h2>Voice chat</h2>
@@ -215,7 +217,9 @@
       <ul class="rules-list">
         <li>Account data and progress: as long as your account exists.</li>
         <li>Public chat messages: 7 days, then deleted. Private messages: 90 days. Clan chat: 30 days.</li>
-        <li>Device fingerprint: 30 days after it was last used; the copy used to prevent invite fraud: 90 days.</li>
+        <li>Device fingerprint: 30 days after it was last used; the copy used to prevent invite fraud: 90 days. A banned phone: its scrambled code is kept while the ban lasts and deleted when it is lifted. The Apple DeviceCheck mark: kept by Apple until we remove it when the ban is lifted.</li>
+        <li>The record of your agreement to the rules and this policy: as long as your account exists; deleted with the account.</li>
+        <li>A copy of a chat line that matched a watched word: at most 30 days; deleted at once when the original line or the account is deleted.</li>
         <li>Profile picture: as long as it is on your account; deleted when you remove it or delete the account. A reported picture is kept as evidence for 180 days, 2 years for child-safety reports.</li>
         <li>Real-money purchase records: kept after account deletion without your personal data, for accounting and refunds.</li>
         <li>Anti-cheat signals: 90 days after they are closed; counters of refused requests: 30 days.</li>
@@ -235,7 +239,7 @@
     </section>
     <section class="card">
       <h2>8. Children</h2>
-      <p>The game is for players aged 13 and over. If you are under 13, do not create an account without your parent or guardian and their permission. The game may ask for your year of birth; if you answer, we use it only for safety settings, and no player ever sees it. A parent can switch on the "Parent lock" with a PIN in Settings, which turns off all social features: friends, messages and chat. No player may ask another for their age, address, school or phone number. If you are a parent and believe your child gave us data without your permission, write to us and we will delete it.</p>
+      <p>The game is for players aged 13 and over: do not create an account if you are under 13. If you are under 18, ask your parent or guardian before you play and before you buy anything. The game may ask for your year of birth; if you answer, we use it only for safety settings, and no player ever sees it. A parent can switch on the "Parent lock" with a PIN in Settings, which turns off all social features: friends, messages and chat. No player may ask another for their age, address, school or phone number. If you are a parent and believe your child gave us data without your permission, write to us and we will delete it.</p>
     </section>
     <section class="card">
       <h2>9. Security</h2>
@@ -243,7 +247,7 @@
     </section>
     <section class="card">
       <h2>10. Changes to this policy</h2>
-      <p>If we change something important we will update the date at the top of this page.</p>
+      <p>If we change something important, we raise the version number and the date at the top of this page, and the game shows you a short summary of what changed and asks you to agree again before you keep playing. If you do not agree, you can stop playing and delete your account.</p>
     </section>
   </article>
 </main>

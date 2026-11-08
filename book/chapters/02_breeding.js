@@ -75,7 +75,7 @@
                 [N(mut.edgeLow) + " إلى أقل من " + N(mut.edgeHigh), P(mut.chanceMid), "↑ " + P(mut.upChanceBelow) + " · ↓ " + P(1 - mut.upChanceBelow)],
                 [N(mut.edgeHigh) + " فما فوق", P(mut.chanceHigh), "↑ " + P(mut.upChanceAbove) + " · ↓ " + P(1 - mut.upChanceAbove)]]) +
               "<p>حجم الطفرة " + N(mut.sizeMin) + " أو " + N(mut.sizeMax) + " نقطة (بنفس الاحتمال). الصفات الأربع الأخرى تأخذ الدفعة فقط.</p>" +
-              H.shots([["hatchery/d_reveal1", "صفحة الفرخ الجديد: علامة الطفرة (−2) بجانب الطاعة"], ["hatchery/d2_reveal1_sell_armed", "احتفظ به أو بعه"]]) +
+              H.shots([["hatchery/d_reveal1", "صفحة الفرخ الجديد: علامة الطفرة الحمراء (−) أو الخضراء (+) بجانب الصفة التي تحوّرت"], ["hatchery/d2_reveal1_sell_armed", "احتفظ به أو بعه"]]) +
               H.tip("الطفرة <b>صغيرة ونادرة</b>: صفة واحدة، نقطة أو نقطتان. لا تنتظر قفزات كبيرة؛ السلالة تُبنى بأجيال كثيرة."),
             en: H.next("<b>Arrives with update 0.1.2.</b> Until then the rule above is used. The server decides the chick, so the rule changes for everyone at the same moment.") +
               "<p>The new rule has no ±" + N(b.statVariation) + " luck on every stat. Instead:</p>" +
@@ -87,7 +87,7 @@
                 [N(mut.edgeLow) + " to under " + N(mut.edgeHigh), P(mut.chanceMid), "↑ " + P(mut.upChanceBelow) + " · ↓ " + P(1 - mut.upChanceBelow)],
                 [N(mut.edgeHigh) + " and up", P(mut.chanceHigh), "↑ " + P(mut.upChanceAbove) + " · ↓ " + P(1 - mut.upChanceAbove)]]) +
               "<p>The size is " + N(mut.sizeMin) + " or " + N(mut.sizeMax) + " points (equal chance). The other four stats only get the push.</p>" +
-              H.shots([["hatchery/d_reveal1", "New chick page: the (−2) mutation mark next to Obedience"], ["hatchery/d2_reveal1_sell_armed", "Keep it or sell it"]]) +
+              H.shots([["hatchery/d_reveal1", "New chick page: a red (−) or green (+) mutation mark next to the stat that mutated"], ["hatchery/d2_reveal1_sell_armed", "Keep it or sell it"]]) +
               H.tip("A mutation is <b>small and rare</b>: one stat, 1 or 2 points. Don't expect big jumps; a line is built over many generations.")
           }
         },

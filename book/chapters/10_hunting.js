@@ -171,8 +171,14 @@
                 "صاحب الدور وحده يطارد، ودوره <b>" + N(onl.bought.turnSeconds / 60) + " دقائق</b>. من لم يستعمل دوره يضيع عليه ويمر الدور للتالي.",
                 "إذا فشلت المطاردة تهرب الفريسة <b>" + N(onl.reflushM) + " م</b> أبعد ويبدأ دور التالي فورًا.",
                 "تعيش الفريسة المطلقة <b>" + N(onl.bought.liveMin) + " دقيقة</b>. من يصيدها يأخذ الشارة، وإن صادها صاحبها عادت إليه.",
-                "الشارة ترجع إلى صاحبها إذا انتهت الساعة أو لم يبقَ أحد في الطابور."
+                "الفريسة تبقى <b>مدتها كاملة</b> مهما فعل صاحبها: إنهاء رحلته أو خروجه أو فراغ الطابور لا ينهيها، فقد يدخل لاعبون آخرون قبل نهايتها. ترجع الشارة إلى صاحبها فقط إذا انتهت المدة ولم يصدها أحد."
               ]) +
+              "<h3>قواعد عادلة للطابور</h3>" +
+              H.table(["القاعدة", "التفاصيل"], [
+                ["فريسة واحدة للجميع", "لكل لاعب فريسة واحدة فقط مطلقة للجميع في نفس الوقت. الإطلاق لنفسك (للتدريب) بلا حد."],
+                ["صقر جاهز", "لتدخل الطابور تحتاج رحلة مفتوحة وصقرًا في يدك لم ينهِ رحلته."],
+                ["جهاز واحد = مكان واحد", "لكل جهاز مكان واحد في طابور الفريسة. والحسابات على جهاز صاحب الفريسة لا تدخل طابوره."],
+                ["محاولة في الجو", "إذا كانت محاولة صيد في الجو عند نهاية المدة، تنتظر اللعبة نتيجتها قبل إغلاق الفريسة."]]) +
               H.next("<b>مع تحديث 0.1.2 أيضًا:</b> يمشي الصقّار في الصحراء أسرع <b>1.5 مرة</b> (" + N(mp.Walk.ForwardMs) + " م/ث)."),
             en: H.kpis([[N(trip.feeCoins), "coins, the trip fee"], [N(trip.vipFeeCoins), "coins for a VIP member"], [N(trip.maxMinutes) + " min", "longest trip"]]) +
               H.table(["Item", "Price", "Note"], [
@@ -190,8 +196,14 @@
                 "Only the player whose turn it is may chase, for <b>" + N(onl.bought.turnSeconds / 60) + " minutes</b>. An unused turn is lost and passes on.",
                 "If the chase fails the animal flees <b>" + N(onl.reflushM) + " m</b> farther and the next turn starts at once.",
                 "A released animal lives <b>" + N(onl.bought.liveMin) + " minutes</b>. The killer takes the Sharah badge prize; if the owner kills it himself, it goes back to him.",
-                "The Sharah goes back to the owner if the hour ends or nobody is left in the queue."
+                "The animal stays its <b>full time</b> whatever its owner does: ending the trip, leaving, or an empty queue does not end it, because more players may still join. The Sharah goes back to the owner only when the time is over and nobody killed it."
               ]) +
+              "<h3>Fair queue rules</h3>" +
+              H.table(["Rule", "Details"], [
+                ["One animal for everyone", "Each player can have only one animal released for everyone at a time. Releasing for yourself (training) has no limit."],
+                ["A ready falcon", "To join a queue you need an open trip and a falcon on your fist that has not finished its trip."],
+                ["One phone = one place", "Each phone gets one place in an animal's queue. Accounts on the owner's own phone cannot join his queue."],
+                ["A try in the air", "If a chase is in the air when the time runs out, the game waits for its result before closing the animal."]]) +
               H.next("<b>Also with update 0.1.2:</b> the falconer walks <b>1.5 times faster</b> in the desert (" + N(mp.Walk.ForwardMs) + " m/s)."),
           }
         },

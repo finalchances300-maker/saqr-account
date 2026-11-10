@@ -215,7 +215,7 @@
                 ["عملات السباقات", "+" + N(club.vipRaceCoinPercent) + "% في السباقات العادية (ليس في السباقات المباشرة ولا البطولات ولا التلواح)"],
                 ["التدريب", "+" + N(club.vipTrainingExtra) + " جلسة لكل صقر كل 24 ساعة"],
                 ["خانات الصقور", "+" + N(club.vipSlots) + " خانات ما دمت عضوًا"],
-                ["هدية يومية", N(club.dailyPearls) + " لؤلؤة كل يوم"],
+                ["هدية يومية", N(club.dailyPearls) + " لؤلؤة كل يوم (" + N(club.dailyPearls * club.days) + " في الشهر، " + N(club.dailyPearls * club.weekDays) + " في الأسبوع)"],
                 ["هدية أسبوعية", N(club.weeklySandglasses) + " ساعة رملية كل أسبوع"],
                 ["الشكل", "إطار ذهبي VIP حول صورتك وعلامة VIP في الدردشة والقوائم"],
                 ["وسام الداعم", "يُمنح عند الشراء"]]) +
@@ -229,7 +229,7 @@
                 ["Race coins", "+" + N(club.vipRaceCoinPercent) + "% on normal races (not live races, tournaments or lure)"],
                 ["Training", "+" + N(club.vipTrainingExtra) + " session per falcon every 24 hours"],
                 ["Falcon slots", "+" + N(club.vipSlots) + " while you are a member"],
-                ["Daily gift", N(club.dailyPearls) + " Pearls every day"],
+                ["Daily gift", N(club.dailyPearls) + " Pearls every day (" + N(club.dailyPearls * club.days) + " a month, " + N(club.dailyPearls * club.weekDays) + " a week)"],
                 ["Weekly gift", N(club.weeklySandglasses) + " sand-glass every week"],
                 ["Looks", "A gold VIP ring around your picture and a VIP tag in chat and on boards"],
                 ["Supporter badge", "Given when you buy"]]) +

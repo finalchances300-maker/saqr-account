@@ -13,6 +13,9 @@
     starter: off("starter_pack").slots, vip: club.vipSlots
   };
   slots.total = slots.base + slots.level + slots.paid + slots.starter + slots.vip;
+  // 0.1.2 (0861): the level gifts add falcon slots at levels 15 and 20
+  var giftSlotRows = D("extra.level_gifts.levels").filter(function (g) { return g.slots; });
+  slots.gifts = giftSlotRows.reduce(function (a, g) { return a + g.slots; }, 0);
   var paidCost = shop.paidSlots.reduce(function (a, s) { return a + s.pearls; }, 0);
   var paid4 = shop.paidSlots.slice(0, 4).reduce(function (a, s) { return a + s.pearls; }, 0);
   var lastPrice = shop.paidSlots[shop.paidSlots.length - 1].pearls;
@@ -286,6 +289,7 @@
                 { label: { ar: "VIP (وبعد انتهائه 3 أيام)", en: "VIP (and 3 days after it ends)" }, value: slots.vip, text: "+" + slots.vip },
                 { label: { ar: "الأقصى", en: "Maximum" }, value: slots.total, text: String(slots.total) }
               ] }) +
+              H.next("<b>تصل مع تحديث 0.1.2:</b> هدايا المستويات تضيف <b>+" + N(slots.gifts) + "</b> خانات (" + giftSlotRows.map(function (g) { return "+" + N(g.slots) + " عند المستوى " + N(g.level); }).join("، ") + ")، فيصبح الأقصى <b>" + N(slots.total + slots.gifts) + "</b> خانة بدل " + N(slots.total) + ".") +
               "<p>أسعار خانات اللآلئ بالترتيب: " + shop.paidSlots.slice(0, 12).map(function (s) { return N(s.pearls); }).join("، ") + "، ثم " + N(lastPrice) + " لكل خانة من الخانات الأخيرة (" + N(lastCount) + " خانات). كلها معًا <b>" + N(paidCost) + "</b> لؤلؤة. أول 4 خانات تكلف " + N(paid4) + " لؤلؤة.</p>" +
               H.info("الصقر المعروض في السوق أو في مزاد يأخذ خانة. وخانات حزمة البداية لها عدّاد خاص ولا تُسترد.") +
               H.shots([["slots/tall_store_slot", "شراء خانة صقر باللآلئ"]]),
@@ -298,6 +302,7 @@
                 { label: { ar: "VIP (وبعد انتهائه 3 أيام)", en: "VIP (and 3 days after it ends)" }, value: slots.vip, text: "+" + slots.vip },
                 { label: { ar: "الأقصى", en: "Maximum" }, value: slots.total, text: String(slots.total) }
               ] }) +
+              H.next("<b>Arrives with update 0.1.2:</b> the level gifts add <b>+" + N(slots.gifts) + "</b> slots (" + giftSlotRows.map(function (g) { return "+" + N(g.slots) + " at level " + N(g.level); }).join(", ") + "), so the maximum becomes <b>" + N(slots.total + slots.gifts) + "</b> slots instead of " + N(slots.total) + ".") +
               "<p>Pearl slot prices in order: " + shop.paidSlots.slice(0, 12).map(function (s) { return N(s.pearls); }).join(", ") + ", then " + N(lastPrice) + " for each of the last " + N(lastCount) + " slots. All together they cost <b>" + N(paidCost) + "</b> Pearls. The first 4 slots cost " + N(paid4) + " Pearls.</p>" +
               H.info("A falcon on the market or in an auction still uses a slot. The Starter pack slots have their own counter and are never refunded.") +
               H.shots([["slots/tall_store_slot", "Buying a falcon slot with Pearls"]])

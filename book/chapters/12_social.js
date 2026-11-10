@@ -8,6 +8,21 @@
   function usd(x) { return "$" + N(x); }
   function item(id) { return D("shop.items[" + id + "].pearls"); }
   function slotsAt(l) { return Math.min(mews.maxLevelSlots, mews.baseSlots + mews.slotsPerLevel * (l - 1)); }
+  /* ---- 0.1.2: levels 13-20 (0860) and one-time level gifts (0861, level_gifts.json) ---- */
+  var nextLevels = D("extra.next.prestige.levels"), gifts = D("extra.level_gifts.levels");
+  var giftCoins = gifts.reduce(function (a, g) { return a + g.coins; }, 0), giftSlots = gifts.reduce(function (a, g) { return a + (g.slots || 0); }, 0);
+  function levelsNext(l) {
+    var A = l === "ar";
+    var newRows = nextLevels.slice(levels.length).map(function (pts, i) { return [N(levels.length + i + 1), N(pts)]; });
+    var giftRows = gifts.map(function (g) { return [N(g.level), N(g.coins) + (A ? " عملة" : " coins") + (g.slots ? " + " + N(g.slots) + (A ? " خانات صقور" : " falcon slots") : "")]; });
+    return H.next(A ? "<b>تصل مع تحديث 0.1.2:</b> يصبح أعلى مستوى <b>" + N(nextLevels.length) + "</b> بدل " + N(levels.length) + "، ومع كل مستوى <b>هدية مستوى</b> مرة واحدة فقط."
+                    : "<b>Arrives with update 0.1.2:</b> the top level becomes <b>" + N(nextLevels.length) + "</b> instead of " + N(levels.length) + ", and every level gives a one-time <b>level gift</b>.") +
+      "<div class=\"two\"><div>" + H.table(A ? ["المستوى الجديد", "السمعة اللازمة"] : ["New level", "Prestige needed"], newRows) + "</div><div>" +
+      H.table(A ? ["المستوى", "هدية المستوى"] : ["Level", "Level gift"], giftRows) + "</div></div>" +
+      H.kpis([[N(giftCoins), A ? "عملة هدايا المستويات كلها" : "coins from all level gifts"], ["+" + N(giftSlots), A ? "خانات صقور (المستوى 15 و20)" : "falcon slots (levels 15 and 20)"]]) +
+      H.tip(A ? "الهدية لكل اللاعبين بنفس القاعدة، وبدون لؤلؤ. ومن تجاوز مستوى قبل التحديث يأخذ هديته مرة واحدة عند أول دخول."
+              : "The gifts follow the same rule for every player, with no Pearls. If you already passed a level before the update, you get its gift once at your first login.");
+  }
 
   /* ---- Falconer's Path: counted from the config ---- */
   var CH = [
@@ -71,7 +86,7 @@
                 ["أهداف مسار الصقّار", N(sum(goals, "prestige")) + " في المجموع"]]) +
               H.next("<b>مع تحديث 0.1.2:</b> صيدات المقناص تعطي من 1 إلى 15 سمعة، وإنقاذ صقر ضائع 15، وبطولة المقناص الأسبوعية حتى 60.") +
               "<p><b>أوسمة الإطلاق:</b> " + rel.badges.map(function (b, i) { return [["الريشة البرونزية", "الريشة الفضية", "الريشة الذهبية", "حارس البرية"][i]] + " (" + N(b.releases) + ")"; }).join("، ") + ".</p>" +
-              H.tip("أطلق صقرًا للبرية لتأخذ سمعة دون أن تبيعه: النخبة تعطي " + N(rel.prestige.elite) + " والأسطوري " + N(rel.prestige.legendary) + "."),
+              H.tip("أطلق صقرًا للبرية لتأخذ سمعة دون أن تبيعه: النخبة تعطي " + N(rel.prestige.elite) + " والأسطوري " + N(rel.prestige.legendary) + ".") + levelsNext("ar"),
             en: "<p><b>Prestige</b> is your reputation. It never goes down, and your <b>level</b> comes from it. Each new level gives you <b>" + N(D("shop.playRewards.levelUpPearls")) + " Pearls</b>.</p>" +
               H.w("bars", { title: { ar: "السمعة اللازمة لكل مستوى", en: "Prestige needed for each level" }, items: lvRows.map(function (r) { return { label: { ar: "المستوى " + r.l, en: "Level " + r.l }, value: r.p, text: N(r.p) }; }), max: levels[levels.length - 1] }) +
               H.table(["Level", "Prestige", "Slots from levels", "What it opens"], lvRows.map(function (r) { return [String(r.l), N(r.p), N(slotsAt(r.l)), OPENS[r.l] ? OPENS[r.l].en : (r.l === levels.length ? "The top level" : "—")]; })) +
@@ -86,7 +101,7 @@
                 ["Falconer's Path goals", N(sum(goals, "prestige")) + " in all"]]) +
               H.next("<b>With update 0.1.2:</b> hunting kills give 1 to 15 prestige, rescuing a lost falcon 15, and the weekly hunting tournament up to 60.") +
               "<p><b>Release badges:</b> " + rel.badges.map(function (b, i) { return ["Bronze feather", "Silver feather", "Golden feather", "Guardian of the wild"][i] + " (" + N(b.releases) + ")"; }).join(", ") + ".</p>" +
-              H.tip("Release a falcon to the wild to earn prestige without selling it: an Elite gives " + N(rel.prestige.elite) + " and a Legendary " + N(rel.prestige.legendary) + ".")
+              H.tip("Release a falcon to the wild to earn prestige without selling it: an Elite gives " + N(rel.prestige.elite) + " and a Legendary " + N(rel.prestige.legendary) + ".") + levelsNext("en")
           }
         },
         {

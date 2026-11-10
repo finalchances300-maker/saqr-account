@@ -30,9 +30,11 @@
                 ["القوائم", "قائمة لكل سلالة وجنس، مثل: شاهين أنثى، جير ذكر، هجين ذكر. كل صقر يدخل قائمته."],
                 ["عدة صقور", "كل صقر عندك يدخل مرة واحدة إن وجد قائمته."],
                 ["الدخول", "تذكرة سباق عادية (رسم السباق العادي، لا يُسترد). سباق البطولة لا يعطي عملات سباق، لكن الصقر يتعب ويجوع ويتعرض للإصابة كالعادة."],
+                ["أي سباق يُحسب؟", "اليوم يُحسب <b>سباق ضد اللعبة فقط</b> في البطولة."],
                 ["النتيجة", "أسرع زمن للوصول يفوز. الصقر الذي لا يصل إلى التلواح بلا زمن."],
                 ["الجوائز تُدفع فقط إذا", "وصل " + N(on.tournamentPrizeRivalsBelow) + " لاعبين على الأقل تحت صاحب المركز، وفي القائمة " + N(on.tournamentMinEntrants) + " لاعبين أنهوا سباقهم على الأقل."],
                 ["الكأس", "كأس دائم ذهبي أو فضي أو برونزي للمراكز 1 إلى 3."]]) +
+              H.next("<b>مع تحديث 0.1.2:</b> سباق البطولة يصير سباقًا <b>مباشرًا ضد لاعبين</b> ويبدأ فورًا بلا انتظار. يبقى هدف البطولة مختارًا بعد السباق، والمحاولة المحسوبة تُحسب أيضًا في مسار الصقّار والمهام اليومية. وإن لم تنطلق في السباق لا تُستهلك محاولتك.") +
               H.w("bars", { title: { ar: "جوائز العملات", en: "Coin prizes" }, items: places.map(function (p, i) { return { label: placeLabel(i), value: on.tournamentCoins[i], text: N(on.tournamentCoins[i]) }; }) }) +
               H.table(["المركز", "عملات", "سمعة", "لآلئ"], places.map(function (p, i) { return [String(p), N(on.tournamentCoins[i]), N(on.tournamentPrestige[i]), N(pearls[i])]; })) +
               H.tip("لكل صقر محاولة واحدة، فدرّب صقرك وأرحه قبل أن تطلقه. وانتبه: إن أنهى أقل من " + N(on.tournamentMinEntrants) + " لاعبين قائمة ما، فلا أحد يأخذ جائزة فيها. السباق في البطولة يُحسب أيضًا في المهام ومسار الصقّار.") +
@@ -49,9 +51,11 @@
                 ["Lists", "One list per species and sex, for example Peregrine female, Gyr male, Hybrid male. Each falcon enters its own list."],
                 ["Several falcons", "Each of your falcons may enter once, if it fits a list."],
                 ["Entry", "A normal race ticket (the normal race fee, not paid back). A tournament race gives no race coins, but the falcon still gets tired, hungry and runs the injury roll as usual."],
+                ["Which race counts?", "Today only a <b>vs Game race</b> counts for the tournament."],
                 ["Result", "The fastest finish time wins. A falcon that does not reach the lure has no time."],
                 ["A place is paid only if", "at least " + N(on.tournamentPrizeRivalsBelow) + " players finished below it, and the list has at least " + N(on.tournamentMinEntrants) + " players with a finished run."],
                 ["Trophy", "A permanent gold, silver or bronze trophy for places 1 to 3."]]) +
+              H.next("<b>With update 0.1.2:</b> a tournament race becomes a <b>live vs Players race</b> and starts at once, with no waiting. The tournament stays selected after a race, and a counted try also counts for the Falconer's Path and the daily tasks. If you miss the take-off, your try is not used.") +
               H.w("bars", { title: { ar: "جوائز العملات", en: "Coin prizes" }, items: places.map(function (p, i) { return { label: placeLabel(i), value: on.tournamentCoins[i], text: N(on.tournamentCoins[i]) }; }) }) +
               H.table(["Place", "Coins", "Prestige", "Pearls"], places.map(function (p, i) { return [String(p), N(on.tournamentCoins[i]), N(on.tournamentPrestige[i]), N(pearls[i])]; })) +
               H.tip("You have one try per falcon, so train and rest your falcon before you fly it. And note: if fewer than " + N(on.tournamentMinEntrants) + " players finish a list, nobody gets a prize in it. Tournament runs also count for tasks and the Falconer's Path.") +
@@ -66,12 +70,13 @@
               H.table(["القاعدة", "التفاصيل"], [
                 ["من يشارك", "يحدد الفريق لكل بطولة: كل الصقور، أو سلالات معينة (وللهجين أيضًا)، أو جنسًا واحدًا."],
                 ["الدخول", "<b>مجاني</b>. محاولة واحدة لكل صقر في كل بطولة، والزمن نهائي."],
-                ["الجوائز", "عملات وسمعة لكل مركز (من 1 إلى 10 مراكز بحسب البطولة) وكأس خاص للمراكز 1 إلى 3. <b>لا لآلئ أبدًا.</b>"],
+                ["الجوائز", "عملات وسمعة لكل مركز (من 1 إلى 10 مراكز بحسب البطولة) وكأس خاص للمراكز 1 إلى 3. <b>لا لآلئ اليوم.</b>"],
                 ["قواعد الإنصاف", "نفس قاعدة بطولة نهاية الأسبوع: المركز يُدفع إذا وصل " + N(on.tournamentPrizeRivalsBelow) + " لاعبين تحته وفي القائمة " + N(on.tournamentMinEntrants) + " لاعبين."],
                 ["تداخل البطولات", "قد تجري بطولة خاصة مع بطولة نهاية الأسبوع ومع بطولات أخرى، ولصقرك أن يسابق في كلٍّ منها."],
                 ["هدف سباقك", "تختار هدف سباقك التالي: عادي، أو نهاية الأسبوع، أو إحدى البطولات."],
                 ["متى تظهر", "الجارية، والتي تبدأ خلال 14 يومًا، والتي انتهت منذ أقل من 7 أيام."],
                 ["الكأس", "يحمل اسم البطولة في خزانة كؤوسك."]]) +
+              H.next("<b>مع تحديث 0.1.2:</b> قد تدفع البطولة الخاصة <b>لآلئ</b> أيضًا لكل مركز، حتى 500 لؤلؤة للمركز (يحددها الفريق لكل بطولة). تراها في القاعة وفي إشعار النتيجة.") +
               H.shots([["profile/profile_trophy_sheet", "خزانة الكؤوس في ملفك"]]) +
               H.next("<b>مع تحديث 0.1.2:</b> شاشات البطولة والدوري واللوحة القديمة تُستبدل بـ<b>ساحة الأبطال</b> (القسم التالي)."),
             en: "<p>The <b>Tournament hall</b> is a village building called \"Tournaments\" (it cannot be upgraded). It holds the weekend card, the <b>Race in the tournament</b> button, the special tournaments, the champions of every list (owner, falcon, ring, time) and replays of the top runs. You can watch the best runs and learn their release timing.</p>" +
@@ -79,12 +84,13 @@
               H.table(["Rule", "Details"], [
                 ["Who may enter", "Set by the team per event: all falcons, or chosen species (also hybrid), or one sex."],
                 ["Entry", "<b>Free</b>. One try per falcon per event, and the time is final."],
-                ["Prizes", "Coins and prestige for each place (1 to 10 places, set per event) and a special trophy for places 1 to 3. <b>Never Pearls.</b>"],
+                ["Prizes", "Coins and prestige for each place (1 to 10 places, set per event) and a special trophy for places 1 to 3. <b>No Pearls today.</b>"],
                 ["Fairness", "Same rule as the weekend: a place pays only if " + N(on.tournamentPrizeRivalsBelow) + " players finished below it and the list has " + N(on.tournamentMinEntrants) + " players."],
                 ["Overlap", "A special tournament may run alongside the weekend one and other events, and your falcon may race in each."],
                 ["Race target", "You pick the target of your next race: normal, weekend, or one of the events."],
                 ["When they show", "Running events, events starting within 14 days, and events that ended within the last 7 days."],
                 ["Trophy", "It carries the event's name in your trophy cabinet."]]) +
+              H.next("<b>With update 0.1.2:</b> a special tournament may also pay <b>Pearls</b> for each place, up to 500 Pearls a place (set by the team per event). You see them in the Hall and in the result notice.") +
               H.shots([["profile/profile_trophy_sheet", "The trophy cabinet in your profile"]]) +
               H.next("<b>With update 0.1.2:</b> the old tournament, ladder and leaderboard screens are replaced by the <b>Hall of Champions</b> (next section).")
           }

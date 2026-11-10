@@ -150,6 +150,50 @@
           }
         },
         {
+          id: "pearl-falcons", title: { ar: "صقور اللآلئ", en: "Pearl falcons" },
+          html: {
+            ar: H.next("<b>تصل مع تحديث 0.1.2.</b>") +
+              "<p>ثمانية صقور تشتريها <b>باللآلئ</b> من المتجر. كلها في مرحلة البلوغ، بلا حظ: ترى قدراتها قبل الشراء. الحر والشاهين، ذكر وأنثى.</p>" +
+              H.table(["النوع", "اللون", "كل القدرات", "السعر"], [
+                ["حر (أنثى) وقرموشة (ذكر)", "رمادي كامل", "30", N(1000) + " لؤلؤة"],
+                ["شاهين (أنثى) وتبع (ذكر)", "رمادي كامل", "30", N(1000) + " لؤلؤة"],
+                ["حر وقرموشة", "بني كامل", "40", N(2650) + " لؤلؤة"],
+                ["شاهين وتبع", "بني كامل", "40", N(2650) + " لؤلؤة"]]) +
+              H.shots([["new/pearl_falcons", "صقور اللآلئ في المتجر (متجر تجريبي)"]]) +
+              H.tip("هذه الأسعار ليست من ملف الإعدادات، فقد تتغير. انظر السعر في المتجر قبل أن تشتري."),
+            en: H.next("<b>Arrives with update 0.1.2.</b>") +
+              "<p>Eight falcons you buy with <b>Pearls</b> in the Store. All are Prime and there is no luck: you see their stats before you buy. Saker and Peregrine, male and female.</p>" +
+              H.table(["Kind", "Colour", "All stats", "Price"], [
+                ["Saker: Hurr (female) and Qarmousha (male)", "Full grey", "30", N(1000) + " Pearls"],
+                ["Peregrine: Shaheen (female) and Tabaa (male)", "Full grey", "30", N(1000) + " Pearls"],
+                ["Saker: Hurr and Qarmousha", "Full brown", "40", N(2650) + " Pearls"],
+                ["Peregrine: Shaheen and Tabaa", "Full brown", "40", N(2650) + " Pearls"]]) +
+              H.shots([["new/pearl_falcons", "Pearl falcons in the Store (test store)"]]) +
+              H.tip("These prices are not in the config file, so they may change. Check the price in the Store before you buy.")
+          }
+        },
+        {
+          id: "sales", title: { ar: "تخفيضات المتجر", en: "Store sales" },
+          html: {
+            ar: H.next("<b>تصل مع تحديث 0.1.2.</b>") +
+              "<p>يعلن الفريق أحيانًا <b>تخفيضًا</b> على أغراض اللآلئ: من 1% إلى 90%. قد يكون مرة واحدة بين وقتين، أو كل أسبوع في أيام معينة (مثل الجمعة والسبت).</p>" +
+              H.steps([
+                "ترى على الصورة «-20%» مثلًا، والسعر القديم مشطوبًا، والسعر الجديد، وعدّادًا للوقت المتبقي.",
+                "الخادم هو الذي يأخذ سعر التخفيض عند الشراء.",
+                "إذا كان على الغرض تخفيضان، يُطبَّق الأكبر فقط، ولا يُجمعان.",
+                "حزم الأموال الحقيقية والسيارات وVIP تبقى بسعر المتجر الرسمي، ولا يظهر عليها التخفيض إلا إذا سُمّيت فيه."
+              ]),
+            en: H.next("<b>Arrives with update 0.1.2.</b>") +
+              "<p>The team sometimes runs a <b>sale</b> on Pearl items: from 1% to 90% off. It may be one time between two dates, or every week on set days (like Friday and Saturday).</p>" +
+              H.steps([
+                "You see \"-20%\" on the picture, the old price crossed out, the new price, and a countdown.",
+                "The server takes the sale price when you buy.",
+                "If an item has two sales, only the bigger one applies. They never add up.",
+                "Real-money packs, cars and VIP keep the official store price, and show a sale badge only when a sale names them."
+              ])
+          }
+        },
+        {
           id: "sandglass", title: { ar: "الساعة الرملية وتخطّي الانتظار", en: "Sand-glasses and skipping waits" },
           html: {
             ar: "<p>الساعة الرملية الواحدة تغطي <b>" + N(shop.sandglassMinutes) + " دقيقة</b> من أي انتظار. إذا نقصتك ساعات دفعت عنها لآلئ: <b>" + N(shop.pearlsPerSandglass) + "</b> للساعة. وآخر <b>" + N(shop.skips.freeFinishMinutes) + "</b> دقائق تنتهي مجانًا.</p>" +

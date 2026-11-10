@@ -164,7 +164,16 @@
                 ["فريسة مشتراة: أرنب", N(prey[1].coins) + " عملة", ""],
                 ["فريسة مشتراة: حبارى", N(prey[2].coins) + " عملة", "لا تُحسب في حبارى اليوم"]]) +
               "<p>تشتري حتى " + N(shop.prey.buyQtyMax) + " دفعة واحدة. المعدات تُباع في المخزن، لا في المتجر.</p>" +
-              "<h3>الفريسة المشتراة والشَّرهة</h3><p>الفريسة المشتراة أضعف من البرية: تعطي " + N(cr.boughtPercent) + "% من نقاط الشجاعة و" + N(cg.rewards.boughtPercent) + "% من العملات. تطلقها <b>لنفسك</b> أو <b>للجميع</b>. وإن أطلقتها للجميع فقد تضع عليها <b>شَرهة</b> (جائزة) من " + N(onl.bought.sharahMin) + " إلى " + N(onl.bought.sharahMax) + " عملة، حتى " + N(onl.bought.sharahPerDay) + " شَرهات في اليوم. من يصيدها يأخذها، وإن لم يصدها أحد عادت إليك.</p>",
+              "<h3>الفريسة المشتراة والشارة</h3><p>الفريسة المشتراة أضعف من البرية: تعطي " + N(cr.boughtPercent) + "% من نقاط الشجاعة و" + N(cg.rewards.boughtPercent) + "% من العملات. تطلقها <b>لنفسك</b> أو <b>للجميع</b>. وإن أطلقتها للجميع فقد تضع عليها <b>شارة</b> (جائزة) من " + N(onl.bought.sharahMin) + " إلى " + N(onl.bought.sharahMax) + " عملة، حتى " + N(onl.bought.sharahPerDay) + " شارات في اليوم. من يصيدها يأخذها، وإن لم يصدها أحد عادت إليك.</p>" +
+              H.next("<b>مع تحديث 0.1.2:</b> الاسم في كل النصوص صار <b>الشارة</b>، والفريسة المشتراة أضعف: <b>نصف قوة</b> الفريسة البرية. وإذا أطلقتها للجميع تصير <b>طابورًا</b>:") +
+              H.steps([
+                "من حولها يضغط <b>«أبي أحاول»</b> ويدخل الطابور. الأول يأتي أولًا، ولكل لاعب <b>محاولة واحدة</b>.",
+                "صاحب الدور وحده يطارد، ودوره <b>" + N(onl.bought.turnSeconds / 60) + " دقائق</b>. من لم يستعمل دوره يضيع عليه ويمر الدور للتالي.",
+                "إذا فشلت المطاردة تهرب الفريسة <b>" + N(onl.reflushM) + " م</b> أبعد ويبدأ دور التالي فورًا.",
+                "تعيش الفريسة المطلقة <b>" + N(onl.bought.liveMin) + " دقيقة</b>. من يصيدها يأخذ الشارة، وإن صادها صاحبها عادت إليه.",
+                "الشارة ترجع إلى صاحبها إذا انتهت الساعة أو لم يبقَ أحد في الطابور."
+              ]) +
+              H.next("<b>مع تحديث 0.1.2 أيضًا:</b> يمشي الصقّار في الصحراء أسرع <b>1.5 مرة</b> (" + N(mp.Walk.ForwardMs) + " م/ث)."),
             en: H.kpis([[N(trip.feeCoins), "coins, the trip fee"], [N(trip.vipFeeCoins), "coins for a VIP member"], [N(trip.maxMinutes) + " min", "longest trip"]]) +
               H.table(["Item", "Price", "Note"], [
                 ["Electronic feather", N(gear.featherPearls) + " Pearls <b>or</b> " + N(gear.featherCoins) + " coins", "One per falcon, permanent once fitted. Without it the trackers see nothing."],
@@ -174,7 +183,16 @@
                 ["Bought prey: rabbit", N(prey[1].coins) + " coins", ""],
                 ["Bought prey: houbara", N(prey[2].coins) + " coins", "Does not count for the daily houbara"]]) +
               "<p>You can buy up to " + N(shop.prey.buyQtyMax) + " at once. Gear is sold in the Inventory, not in the Store.</p>" +
-              "<h3>Bought prey and the Sharah</h3><p>Bought prey is weaker than wild prey: it gives " + N(cr.boughtPercent) + "% of the courage XP and " + N(cg.rewards.boughtPercent) + "% of the coins. You release it <b>for yourself</b> or <b>for everyone</b>. Released for everyone, you may put a <b>Sharah</b> (a reward pool) on it, from " + N(onl.bought.sharahMin) + " to " + N(onl.bought.sharahMax) + " coins, up to " + N(onl.bought.sharahPerDay) + " a day. Whoever kills it takes it; if nobody does, it comes back to you.</p>"
+              "<h3>Bought prey and the Sharah</h3><p>Bought prey is weaker than wild prey: it gives " + N(cr.boughtPercent) + "% of the courage XP and " + N(cg.rewards.boughtPercent) + "% of the coins. You release it <b>for yourself</b> or <b>for everyone</b>. Released for everyone, you may put a <b>Sharah</b> (a reward pool) on it, from " + N(onl.bought.sharahMin) + " to " + N(onl.bought.sharahMax) + " coins, up to " + N(onl.bought.sharahPerDay) + " a day. Whoever kills it takes it; if nobody does, it comes back to you.</p>" +
+              H.next("<b>With update 0.1.2:</b> the prize is named the <b>Sharah badge</b> everywhere, and a bought animal is weaker: <b>half as strong</b> as a wild one. Released for everyone it becomes a <b>queue</b>:") +
+              H.steps([
+                "Players near it press <b>\"Abi ahawel\" (I want to try)</b> to join the queue. First come, first served, and <b>one try</b> per player.",
+                "Only the player whose turn it is may chase, for <b>" + N(onl.bought.turnSeconds / 60) + " minutes</b>. An unused turn is lost and passes on.",
+                "If the chase fails the animal flees <b>" + N(onl.reflushM) + " m</b> farther and the next turn starts at once.",
+                "A released animal lives <b>" + N(onl.bought.liveMin) + " minutes</b>. The killer takes the Sharah badge prize; if the owner kills it himself, it goes back to him.",
+                "The Sharah goes back to the owner if the hour ends or nobody is left in the queue."
+              ]) +
+              H.next("<b>Also with update 0.1.2:</b> the falconer walks <b>1.5 times faster</b> in the desert (" + N(mp.Walk.ForwardMs) + " m/s)."),
           }
         },
         {
@@ -246,7 +264,7 @@
               "<h3>إذا تغرّزت (التغريز)</h3>" +
               H.table(["طريقة الخروج", "التكلفة", "ملاحظة"], [
                 ["هزّ السيارة (أمام وخلف)", "مجانًا", "مهارة"],
-                ["أنقص هواء الإطارات", "مجانًا", "تماسك أفضل على الرمل وسرعة أقل على الأرض الصلبة"],
+                ["أنقص هواء الإطارات (الزر في 0.1.2: «نزل هوا التواير»)", "مجانًا", "تماسك أفضل على الرمل وسرعة أقل على الأرض الصلبة"],
                 ["احفر بالمجرفة", "مجانًا، نحو 15 ثانية", "موجودة دائمًا في السيارة"],
                 ["ألواح الرمل", N(rules.boards.price) + " عملة لحزمة من " + N(rules.boards.uses) + " استخدامات", "تستطيع حمل 100 استخدام"],
                 ["حبل السحب", "مجانًا للاثنين", "لاعب آخر في الصحراء نفسها وفي سيارته، ضمن " + N(onl.tow.rangeM) + " م، يسحبك " + N(onl.tow.pullM) + " م. لا بد أن تطلب أولًا. المساعد لا يأخذ عملات ولا سمعة."]]) +
@@ -264,7 +282,7 @@
               "<h3>If you get stuck</h3>" +
               H.table(["Way out", "Cost", "Note"], [
                 ["Rock the car (forward and back)", "free", "skill"],
-                ["Let air out of the tyres", "free", "better sand grip, lower top speed on hard ground"],
+                ["Let air out of the tyres (the button reads \"Let air out\" in 0.1.2)", "free", "better sand grip, lower top speed on hard ground"],
                 ["Dig with the shovel", "free, about 15 seconds", "always in the car"],
                 ["Sand boards", N(rules.boards.price) + " coins for a pack of " + N(rules.boards.uses) + " uses", "You can hold up to 100 uses"],
                 ["Tow rope", "free for both players", "Another player in the same desert, in his car, within " + N(onl.tow.rangeM) + " m, pulls you " + N(onl.tow.pullM) + " m. You must ask first. The helper gets no coins and no prestige."]]) +

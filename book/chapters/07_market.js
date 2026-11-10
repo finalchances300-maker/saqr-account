@@ -1,6 +1,9 @@
 /* Chapter 7 - Market & economy. Facts: Docs/Systems/07_economy_market.md. Every number comes from data.js through B.D(). */
 (function (B) {
   var D = B.D, N = B.N, P = B.P, H = B.H;
+  var huntIds = ["pigeon", "rabbit", "seagull", "houbara", "houbara_male"];
+  var huntCoins = huntIds.map(function (id) { return D("extra.hunting_courage.species." + id + ".coins"); });
+  var huntMin = Math.min.apply(null, huntCoins), huntMax = Math.max.apply(null, huntCoins);
   var V = D("economy.valuation"), mk = D("market"), on = D("online"), tr = D("online.trade"), trader = D("trader");
   var TN = B.TIER_NAMES, tiers = ["common", "good", "rare", "elite", "legendary"];
   var step = mk.npcStepSales, pct = mk.npcStepPercents;
@@ -46,7 +49,7 @@
                 ["بيع فرخ مولود", N(D("nests.chickSellCoins")) + " عملة ثابتة"],
                 ["ضيف مساء الجمعة (تاجر القماش)", N(D("evening.guests[5].amount")) + " عملة"],
                 ["بيع صقر للسوق أو للتاجر أو للاعب", "انظر الأقسام التالية"]]) +
-              H.next("<b>تصل مع تحديث 0.1.2:</b> صيد المقناص يعطي من 100 إلى 8,000 عملة لكل صيدة (انظر فصل المقناص).") +
+              H.next("<b>تصل مع تحديث 0.1.2:</b> صيد المقناص يعطي من " + N(huntMin) + " إلى " + N(huntMax) + " عملة لكل صيدة (انظر فصل المقناص).") +
               H.shots([["inventory/all", "المخزن: لآلئك وعملاتك وساعاتك الرملية في مكان واحد"]]),
             en: "<p>The game has two kinds of money, plus a sand-glass for waiting:</p>" +
               H.table(["Type", "What it is", "Where it comes from"], [
@@ -68,7 +71,7 @@
                 ["Selling a newborn chick", N(D("nests.chickSellCoins")) + " coins, flat"],
                 ["Friday evening guest (the cloth merchant)", N(D("evening.guests[5].amount")) + " coins"],
                 ["Selling a falcon to the market, the trader or a player", "see the next sections"]]) +
-              H.next("<b>Arrives with update 0.1.2:</b> hunting pays 100 to 8,000 coins per catch (see the Hunting chapter).") +
+              H.next("<b>Arrives with update 0.1.2:</b> hunting pays " + N(huntMin) + " to " + N(huntMax) + " coins per catch (see the Hunting chapter).") +
               H.shots([["inventory/all", "The Inventory: your Pearls, coins and sand-glasses in one place"]])
           }
         },
@@ -199,6 +202,63 @@
           }
         },
         {
+          id: "private", title: { ar: "البيع للاعب واحد (بيع خاص)", en: "Selling to one player (private sale)" },
+          html: {
+            ar: H.next("<b>تصل مع تحديث 0.1.2.</b> حتى ذلك الحين كل العروض تظهر للجميع.") +
+              "<p>تبيع صقرك للاعب <b>واحد</b> تختاره أنت. لا يراه غيره، ولا يستطيع أحد سواه شراءه. هو بيع عادي بقواعد السوق نفسها.</p>" +
+              H.steps([
+                "افتح صقرك واختر <b>بيع للاعب واحد</b>، ثم اختر المشتري.",
+                "ضع السعر داخل النطاق المعتاد (" + N(tr.minPricePercent) + "–" + N(tr.maxPricePercent) + "% من القيمة). العرض يُحسب من عروضك في الـ 24 ساعة.",
+                "يصل المشتري إشعار، ويرى العرض في قسم <b>عرض خاص لك</b>. وفي <b>عروضي</b> ترى أنت لمن هو.",
+                "يشتريه المشتري بالشراء العادي: الرسوم نفسها (" + N(fee) + "%) وحد المشتريات نفسه.",
+                "ينتهي العرض بعد <b>" + N(tr.privateSaleHours) + " ساعة</b> فيعود الصقر إليك. وتستطيع إلغاءه قبل ذلك."
+              ]) +
+              H.kpis([[N(tr.privateSaleHours) + " س", "مدة العرض الخاص"], [N(fee) + "%", "الرسوم، كالسوق"], ["1", "مشتري واحد"]]) +
+              H.tip("لا تضع صقرًا في سوق مفتوح لصديقك: قد يسبقه غريب. اجعله عرضًا خاصًا."),
+            en: H.next("<b>Arrives with update 0.1.2.</b> Until then every offer is public.") +
+              "<p>You sell your falcon to <b>one</b> player of your choice. Nobody else sees it and nobody else can buy it. It is a normal sale with the market's own rules.</p>" +
+              H.steps([
+                "Open your falcon and choose <b>Sell to one player</b>, then pick the buyer.",
+                "Set the price inside the usual band (" + N(tr.minPricePercent) + "–" + N(tr.maxPricePercent) + "% of the value). The offer counts among your offers of the last 24 hours.",
+                "The buyer gets a notification and sees the offer in <b>Special offer for you</b>. In <b>Mine</b> you see who it is for.",
+                "The buyer buys it the normal way: the same fee (" + N(fee) + "%) and the same buy limit.",
+                "The offer ends after <b>" + N(tr.privateSaleHours) + " hours</b> and the falcon comes back to you. You can cancel it before that."
+              ]) +
+              H.kpis([[N(tr.privateSaleHours) + " h", "private offer lasts"], [N(fee) + "%", "fee, as the market"], ["1", "one buyer only"]]) +
+              H.tip("Do not put a falcon on the open market for a friend: a stranger may beat him to it. Make it a private offer.")
+          }
+        },
+        {
+          id: "countdown", title: { ar: "عدّاد حدّ الـ 24 ساعة", en: "The 24-hour limit counter" },
+          html: {
+            ar: H.next("<b>يصل مع تحديث 0.1.2.</b> حتى ذلك الحين تعمل الحدود نفسها لكن بلا عدّاد.") +
+              "<p>لكل لاعب <b>" + N(tr.offersPer24h) + "</b> عروض جديدة و<b>" + N(tr.buysPer24h) + "</b> مشتريات في كل 24 ساعة. العدّاد يريك أين أنت:</p>" +
+              H.steps([
+                "في بطاقة بيع الصقر: «العروض خلال آخر 24 ساعة: 2 من " + N(tr.offersPer24h) + "».",
+                "إذا وصلت للحد، يعطّل اللعبة أزرار العرض والمزاد ويكتب: <b>تقدر تعرض مرة ثانية بعد</b> ومعه الوقت المتبقي.",
+                "عند انتهاء الوقت تعود الأزرار وحدها. الشراء والمزايدة لهما عدّاد مثله في سوق اللاعبين."
+              ]),
+            en: H.next("<b>Arrives with update 0.1.2.</b> Until then the same limits apply, without a counter.") +
+              "<p>Every player has <b>" + N(tr.offersPer24h) + "</b> new offers and <b>" + N(tr.buysPer24h) + "</b> buys in each 24 hours. The counter shows where you stand:</p>" +
+              H.steps([
+                "On the falcon's sell card: \"Offers in the last 24 hours: 2 of " + N(tr.offersPer24h) + "\".",
+                "At the limit the game switches off the List and Auction buttons and writes <b>You can list again after</b> with the time left.",
+                "When the time is up the buttons come back by themselves. Buying and bidding have the same counter in the players' market."
+              ])
+          }
+        },
+        {
+          id: "market-chat", title: { ar: "مبايعة الدردشة: في سوق الدردشة", en: "Trade talk: use the Market chat" },
+          html: {
+            ar: "<p>كلام البيع والشراء مكانه <b>غرفة السوق</b> في الدردشة، لا غرفة «الكل». إذا كتبت في «الكل» سطرًا للبيع أو الشراء (مثل «للبيع» أو «مطلوب» أو «بكم»)، تنقله اللعبة إلى غرفة السوق، ويراه الجميع هناك. وتظهر لك أنت وحدك رسالة: <b>المبايعة في سوق الدردشة، نقلنا رسالتك هناك</b>.</p>" +
+              H.tip("الأسئلة (مثل «كيف أبيع الطير؟») تبقى في «الكل». والرسائل التي تكتبها في غرفة السوق تبقى فيها.") +
+              H.info("هذا يعمل الآن، ولا يحتاج تحديثًا للّعبة."),
+            en: "<p>Buying and selling talk belongs in the <b>Market room</b> of the chat, not in the <b>All</b> room. If you write a buy or sell line in All (like \"for sale\", \"wanted\" or \"how much\"), the game moves it to the Market room and everyone sees it there. Only you see a note: <b>Trading goes in the Market chat: we moved your message there</b>.</p>" +
+              H.tip("Questions (like \"how do I sell my falcon?\") stay in All. Messages you write in the Market room stay there.") +
+              H.info("This works now. No game update is needed.")
+          }
+        },
+        {
           id: "auctions", title: { ar: "المزادات المباشرة", en: "Live auctions" },
           html: {
             ar: "<p>بدل السعر الثابت، اعرض صقرك في مزاد. الناس يزايدون، وأعلى مزايد يفوز.</p>" +
@@ -249,15 +309,36 @@
           }
         },
         {
+          id: "refunds", title: { ar: "الاسترداد التلقائي", en: "Automatic refunds" },
+          html: {
+            ar: "<p>إذا دفعت رسم دخول وخسرته بسبب عطل وليس بسبب نتيجتك، تردّه لك اللعبة <b>تلقائيًا</b> (تفحص كل 5 دقائق). لا تحتاج أن تطلب شيئًا. الخسارة العادلة في السباق لا تُسترد.</p>" +
+              H.table(["الحالة", "ماذا يحدث"], [
+                ["سباق مباشر لم تنطلق فيه في الـ 30 ثانية (انقطع الاتصال أو أُغلقت اللعبة)", "يعود رسم الدخول. الحد الأقصى 5 مرات في اليوم، ونقاط الترتيب لا تتغير."],
+                ["سباق مباشر ألغي أو لم يبدأ أو علق أكثر من ساعتين", "يعود رسم الدخول."],
+                ["تذكرة سباق (عادي أو بطولة) في وقت عطل في الخادم ولم تحصل على نتيجة", "يعود رسم الدخول."],
+                ["رحلة مقناص في وقت عطل ولم تطلق فيها فريسة ولم تطارد", "تعود رسوم الرحلة."],
+                ["بطولة مقناص ألغيت", "يعود رسم الدخول."]]) +
+              H.tip("سباق انتهى بنتيجة، حتى لو جاء صقرك الأخير، لا يُسترد: هذه نتيجة عادلة."),
+            en: "<p>If you paid an entry and lost it because of a failure and not because of your result, the game gives it back <b>automatically</b> (it checks every 5 minutes). You do not need to ask. A fair loss in a race is not refunded.</p>" +
+              H.table(["Case", "What happens"], [
+                ["A live race where you did not take off in the 30 seconds (connection lost, game closed)", "The entry fee comes back. At most 5 times a day, and your ranking points do not change."],
+                ["A live race that was cancelled, never started, or hung for more than 2 hours", "The entry fee comes back."],
+                ["A race ticket (normal or tournament) made during a server outage that got no result", "The entry fee comes back."],
+                ["A hunting trip made during an outage where you released no prey and made no chase", "The trip fee comes back."],
+                ["A hunting tournament that was cancelled", "The entry fee comes back."]]) +
+              H.tip("A race that ended with a result, even your falcon finishing last, is not refunded: that is a fair result.")
+          }
+        },
+        {
           id: "tips", title: { ar: "نصائح ذكية", en: "Smart tips" },
           html: {
             ar: "<ul><li>افحص القيمة قبل أن تعرض. السعر خارج " + N(tr.minPricePercent) + "–" + N(tr.maxPricePercent) + "% يُرفض.</li>" +
-              "<li>الرسوم " + N(fee) + "%: بيعة بـ 100,000 تعطيك 85,000.</li>" +
+              "<li>الرسوم " + N(fee) + "%: بيعة بـ " + N(100000) + " تعطيك " + N(100000 * (100 - fee) / 100) + ".</li>" +
               "<li>الصقر الذي تشتريه من لاعب مقفل " + N(tr.boughtLockHours) + " ساعة. خطّط قبل أن تشتري لتبيع.</li>" +
               "<li>السوق يدفع حتى " + N(mk.npcMaxPayout) + " فقط. الصقور النادرة والنخبة والأسطورية تساوي أكثر عند اللاعبين أو عند التاجر (حتى " + N(trader.maxCoins) + ").</li>" +
               "<li>صقور البداية لا تُتداول. استعملها للسباق والتزاوج والتدريب.</li></ul>",
             en: "<ul><li>Check the value before you list. A price outside " + N(tr.minPricePercent) + "–" + N(tr.maxPricePercent) + "% is refused.</li>" +
-              "<li>The fee is " + N(fee) + "%: a 100,000 sale pays you 85,000.</li>" +
+              "<li>The fee is " + N(fee) + "%: a " + N(100000) + " sale pays you " + N(100000 * (100 - fee) / 100) + ".</li>" +
               "<li>A falcon you buy from a player is locked for " + N(tr.boughtLockHours) + " hours. Plan before you buy to sell on.</li>" +
               "<li>The market pays " + N(mk.npcMaxPayout) + " at most. Rare, Elite and Legendary falcons are worth more to players or to the trader (up to " + N(trader.maxCoins) + ").</li>" +
               "<li>Starter falcons cannot be traded. Use them to race, breed and train.</li></ul>"

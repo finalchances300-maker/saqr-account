@@ -258,6 +258,8 @@
                 ["الرسالة نفسها مرة أخرى", "تُمنع " + N(chat.dupWindowS) + " ثانية"], ["مدة الحفظ", N(chat.retentionDays) + " أيام"],
                 ["غرفة الأخبار", "رسالة حتى " + N(chat.news.maxLen) + " حرف، تُحفظ " + N(chat.news.retentionDays) + " يومًا، وحتى " + N(chat.news.pinnedMax) + " مثبتة"],
                 ["المرشّح", "الكلمات السيئة والروابط وأرقام الهواتف وتطبيقات التواصل تُحجب أو تُخفى"]]) +
+              H.info("<b>مبايعة:</b> كلام البيع والشراء في «الكل» تنقله اللعبة إلى غرفة السوق (انظر فصل السوق).") +
+              H.next("<b>في تحديث قادم:</b> <b>الرد والإشارة.</b> اضغط سطرًا واختر <b>رد</b>: يظهر في رسالتك اقتباس صغير من الأصل، وبالضغط عليه تقفز إليه. وزر <b>@</b> يفتح قائمة اللاعبين في الغرفة لتشير إلى لاعب (حتى 3 أسماء في السطر): يرى اسمه ذهبيًا ويصله إشعار واحد. يعمل في كل الغرف والرسائل الخاصة ودردشة السباق.") +
               H.next("<b>دردشة السباق (0.1.2):</b> غرفة لمتسابقي سباق مباشر واحد فقط. تُفتح عند المطابقة وتُغلق حين يغادر آخر متسابق (أو بعد 10 دقائق من السباق)، وتُحفظ سطورها 7 أيام. يُشغّلها الفريق عند الإصدار.") +
               H.tip("لا تكتب أرقام هواتف أو روابط أو حسابات تواصل في الدردشة: المرشّح يحجبها.") +
               H.shots([["majlis/chat_rooms", "غرف الدردشة"], ["majlis/chat_news", "غرفة الأخبار"]]),
@@ -267,6 +269,8 @@
                 ["The same message again", "Blocked for " + N(chat.dupWindowS) + " seconds"], ["Kept", N(chat.retentionDays) + " days"],
                 ["The News room", "Up to " + N(chat.news.maxLen) + " letters, kept " + N(chat.news.retentionDays) + " days, up to " + N(chat.news.pinnedMax) + " pinned"],
                 ["Filter", "Bad words, links, phone numbers and contact apps are blocked or masked"]]) +
+              H.info("<b>Trade talk:</b> buy and sell lines written in All are moved by the game to the Market room (see the Market chapter).") +
+              H.next("<b>In a coming update:</b> <b>Reply and mention.</b> Tap a line and choose <b>Reply</b>: your message shows a small quote of the original, and a tap on it jumps there. The <b>@</b> button opens a list of the players in the room so you can mention one (up to 3 names a line): he sees his name in gold and gets one notice. It works in every room, in private messages and in the race chat.") +
               H.next("<b>Race chat (0.1.2):</b> a room for the real racers of one live race only. It opens at the match and closes when the last racer leaves (or 10 minutes after the race), and its lines are kept 7 days. The team switches it on at the release.") +
               H.tip("Never put phone numbers, links or social handles in chat: the filter blocks them.") +
               H.shots([["majlis/chat_rooms", "The chat rooms"], ["majlis/chat_news", "The News room"]])
@@ -283,6 +287,17 @@
               H.kpis([[N(item("card_shout")), "Pearls for a Shout card"], [N(lb.maxLen), "letters per message"], [N(lb.shoutCooldownMin) + " min", "between two shouts by a player"]]) +
               "<ul><li>A message moves across twice, " + N(lb.showSeconds) + " seconds each time. The queue holds up to " + N(lb.queueMax) + ".</li><li>It shows your round picture, name and message.</li><li>The same filter as chat applies, and a refused text does not use the card.</li><li>The Shout card cannot be gifted.</li></ul>" +
               H.next("<b>With update 0.1.2:</b> the Shout card in the game, and a gold line announcing a houbara or khurb catch for 60 minutes.")
+          }
+        },
+        {
+          id: "fair-play", title: { ar: "قواعد اللعب النظيف", en: "Fair-play rules" },
+          html: {
+            ar: "<p>اللعبة لكل لاعب بالقواعد نفسها. هذه قاعدة مهمة:</p>" +
+              H.warn("<b>حساب واحد لكل جهاز.</b> التبادل بين حساباتك أنت يُصفّر العملات، والحسابات الزائدة تُحذف ويبقى الحساب الأخير استخدامًا.") +
+              H.tip("تريد أن تعطي صديقًا صقرًا؟ بعه بيعًا عاديًا بقواعد السوق."),
+            en: "<p>The game is the same for every player. One rule matters a lot:</p>" +
+              H.warn("<b>One account per device.</b> Trading between your own accounts sets the coins to 0, and extra accounts are deleted. The last-used account is kept.") +
+              H.tip("Want to give a friend a falcon? Sell it the normal way under the market's rules.")
           }
         },
         {
